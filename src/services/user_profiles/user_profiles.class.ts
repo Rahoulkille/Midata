@@ -1,33 +1,30 @@
 import { Service, KnexServiceOptions } from 'feathers-knex';
 import { Application } from '../../declarations';
 import { Params } from '@feathersjs/feathers';
-import uuid from 'uuid';
-import { DbUser } from '../../models/users.model';
 
-interface UserData {
-  email: string;
-  password: string;
+interface UserProfile {
+  age: number;
+  gender: string;
 }
-export class Users extends Service<UserData> {
+export class UserProfiles extends Service {
   constructor(options: Partial<KnexServiceOptions>, app: Application) {
     super({
       ...options,
-      name: 'users'
+      name: 'user_profiles'
     });
   }
 
-  create (data: UserData, params?: Params) {
+  create (data: UserProfile, params?: Params) {
     // This is the information we want from the user signup data
-    const { email, password } = data;
+    const { age, gender } = data;
 
     // The complete user
-    const userData: DbUser = {
-      email,
-      password,
-      user_id: uuid()
+    const userProfile = {
+      age,
+      gender,
     };
 
     // Call the original `create` method with existing `params` and new data
-    return super.create(userData, params);
+    return super.create(userProfile, params);
   }
 }
