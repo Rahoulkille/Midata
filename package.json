@@ -29,7 +29,7 @@
     "@nestjs/typeorm": "^6.3.3",
     "@types/bcrypt": "^3.0.0",
     "@types/uuid": "^3.4.7",
-    "bcrypt": "^4.0.0",
+    "bcrypt": "^5.0.0",
     "class-transformer": "^0.2.3",
     "class-validator": "^0.11.0",
     "passport": "^0.4.1",
